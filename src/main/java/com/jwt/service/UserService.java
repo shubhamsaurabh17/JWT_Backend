@@ -48,6 +48,11 @@ public class UserService {
     }
 
     public User registerNewUser(User user) {
+    	
+    	if (userDao.existsByUserName(user.getUserName())) {
+            throw new IllegalArgumentException("Username is already taken");
+        }
+    	
         Role role = roleDao.findById("User").get();
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(role);

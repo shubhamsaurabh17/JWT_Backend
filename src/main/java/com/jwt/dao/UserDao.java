@@ -7,4 +7,6 @@ import com.jwt.entity.User;
 
 @Repository
 public interface UserDao extends CrudRepository<User, String> {
+	
+	boolean existsByUserName(String userName);
 }
